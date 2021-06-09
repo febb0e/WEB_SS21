@@ -1,0 +1,93 @@
+<html lang=en>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Upload new content</title>
+	<link rel="stylesheet" href="WEB_excercise_today.css" />
+	<script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link rel="stylesheet" href="../css/cards.css"> </head>
+
+<body>
+	<!-- Navbar Setup -->
+	<nav class="navbar">
+		<div class="navbar-brand">
+			<!-- INSERT LINK TO LANDING PAGE -->
+			<a class="navbar-item" href="WEB_excercise_today_Home.html"> <img src="img/dumbbell.png" alt="Logo" class="icon"> </a>
+			<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"> <span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>
+		</div>
+		<div id="navbarSetup" class="navbar-menu">
+			<div class="navbar-end">
+				<!-- Link of Subpages --><a class="navbar-item" href="WEB_excercise_today_Home.html">
+             HOME
+           </a> <a class="navbar-item" href="WEB_excercise_today_Posts.html">
+             POSTS
+           </a> <a class="navbar-item" href="WEB_excercise_today_Upload.html">
+             UPLOAD
+           </a>
+				<!-- End Linking -->
+			</div>
+		</div>
+	</nav>
+	<!-- Navbar End -->
+	<div class="page-container">
+		<div class="content-container">
+			<section class="section">
+				<div class="input-container">
+					<div class="section">
+						<div class="columns">
+							<div class="column has-text-centered">
+								<h1 class="title">
+                    UPLOAD
+                  </h1>
+								<div class="column">
+									<p class="subtitle"> Create a new Post </p>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="section">
+								<div class="field">
+									<label class="label"> Enter Date </label>
+									<div class="control">
+										<input class="date" type="date"> </div>
+								</div>
+								<div class="field">
+									<label class="label"> Title </label>
+									<div class="control">
+										<input type="text" placeholder="Title of your post"> </div>
+								</div>
+								<div class="field">
+									<label class="label"> Description </label>
+									<div class="control">
+										<textarea class="textarea" type="textarea is-large" placeholder="Description goes here" rows="8"></textarea>
+									</div>
+								</div>
+								<div class="file has-name is-centered">
+									<label class="file-label">
+										<input class="file-input" type="file" name="image"> <span class="file-cta">
+                     <span class="file-icon">
+                       <i class="fas fa-upload"></i>
+                     </span> <span class="file-label"> Choose image</span> </span> <span class="file-name">
+                   YourImageUpload.png
+                 </span> </label>
+								</div>
+								<div class="section has-text-centered"> <a class="button" href="WEB_MS1_Upload.html"> UPLOAD </a> <a class="button" href="WEB_MS1_Home.html"> CANCEL </a> </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<footer class="footer">
+			<div class="impressum has-text-centered">
+				<a class="footer-item" href="WEB_excercise_today_Home.html"> <img src="img/dumbbell.png" alt="Logo" class="icon"> </a>
+				<div class="column"> <a class="footer-content" href="#"> Contact </a> <a class="footer-content" href="#"> Kontakt </a> <a class="footer-content" href="#"> Social Media </a> <a class="footer-content" href="#"> Improve Website </a> </div>
+			</div>
+		</footer>
+	</div>
+</body>
+
+</html>

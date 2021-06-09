@@ -1,10 +1,10 @@
-package de.thkoeln.web.ms3.excercisetoday;
+package de.thkoeln.web.excercise.today.aplication;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ExcercisetodayApplicationTests {
+class AplicationApplicationTests {
 
 	@Test
 	void contextLoads() {

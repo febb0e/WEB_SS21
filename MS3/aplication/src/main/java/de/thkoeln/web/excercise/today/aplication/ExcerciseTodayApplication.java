@@ -1,11 +1,13 @@
-package de.thkoeln.web.ms3.excercisetoday;
+package de.thkoeln.web.excercise.today.aplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExcercisetodayApplication {
+public class ExcerciseTodayApplication {
+
 	public static void main(String[] args) {
-		SpringApplication.run(ExcercisetodayApplication.class, args);
+		SpringApplication.run(ExcerciseTodayApplication.class, args);
 	}
+
 }

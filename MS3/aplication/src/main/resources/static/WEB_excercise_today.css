@@ -1,0 +1,161 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css";
+
+body {
+	background-color: #174459;
+	height: auto;
+}
+
+.title {
+	color: #fdfdfd;
+	font-size: 3rem;
+	font-weight: 600;
+	line-height: 1.125;
+}
+
+.subtitle {
+	font-size: 1.5rem;
+	color: #dcebf2;
+}
+
+.page-container {
+	position: relative;
+	min-height: 100%;
+}
+
+.content-container {
+	padding-bottom: 2.5rem;
+}
+
+.title-homepage {
+	color: #0e2936;
+	text-align: center;
+	font-size: 3rem;
+	font-weight: 600;
+	line-height: 1.125;
+	padding-top: 12rem;
+}
+
+.button {
+	margin-top: 3rem;
+	color: #fdfdfd;
+	background-color: #266f91;
+	border-color: #0e2936;
+}
+
+.subtitle-homepage {
+	color: #174459;
+	text-align: center;
+	font-size: 1.5rem;
+	padding-top: 1.5rem;
+}
+
+.background {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(rgba(255,255,255,0.8),rgba(0,0,0,0.8)), url("img/home.png");
+	height: 100%;
+}
+
+.navbar {
+	background-color: #0e2936;
+	height: 65px;
+}
+
+.navbar-burger {
+	height: 65px;
+	filter: brightness(0) invert(1);
+}
+
+.navbar-menu {
+	width: 33%;
+	flex-grow: 1;
+	flex-shrink: 0;
+	align-items: flex-end;
+}
+
+.navbar-item {
+	color: #dcebf2;
+	align-content: center;
+	padding-left: 5rem;
+	font-size: 1.2rem;
+}
+
+.navbar-item img {
+	width: 35px;
+	height: 30px;
+}
+
+.icon {
+	filter: brightness(0) invert(1);
+}
+
+.container {
+	flex-grow: 1;
+	margin: 0 auto;
+	position: relative;
+	width: auto;
+	padding-bottom: 2rem;
+}
+
+.date {
+	color: #57caff;
+	text-align: right;
+	margin-bottom: 0.5rem;
+}
+
+.post-line {
+	display: flex;
+	flex-wrap: wrap;
+	padding-bottom: 7rem;
+}
+
+.post-content {
+	text-align: center;
+	border-radius: 5px;
+	background-color: #266f91;
+	height: 100%;
+	min-width: 769px;
+}
+
+.image-16zu9 {
+	display: flex;
+}
+
+.post-title {
+	color: #fdfdfd;
+	font-size: 1.3rem;
+}
+
+.post-text {
+	color: #dcebf2;
+	text-align: inherit;
+}
+
+.textarea {
+	min-width: 80%;
+}
+
+.file {
+	padding-top: 3rem;
+}
+
+.file-name {
+	color: #fdfdfd;
+}
+
+.label {
+	color: #fdfdfd;
+	text-align: left;
+}
+
+.footer {
+	position: absolute;
+	width: 100%;
+	height: 2.5rem;
+	background-color: #0e2936;
+}
+
+.footer-content {
+	color: #dcebf2;
+	padding: 1.5rem;
+}
