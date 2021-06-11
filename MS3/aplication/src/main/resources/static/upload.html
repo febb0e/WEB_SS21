@@ -1,4 +1,4 @@
-<html lang=en>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
@@ -47,6 +47,9 @@
 								</div>
 							</div>
 						</div>
+						<form action="/upload_get" method="get">
+						<!--	<form action="/upload_post" method="post"> -->
+						<!--	<form action="/upload" method="post" enctype="multipart/form-data"> -->
 						<div class="container">
 							<div class="section">
 								<div class="field">
@@ -74,9 +77,15 @@
                    YourImageUpload.png
                  </span> </label>
 								</div>
-								<div class="section has-text-centered"> <a class="button" href="upload.html"> UPLOAD </a> <a class="button" href="index.html"> CANCEL </a> </div>
+								<div class="section has-text-centered"> <a class="button" href="upload.html" value="upload"> UPLOAD </a> <a class="button" href="index.html"> CANCEL </a> </div>
 							</div>
 						</div>
+					</form>
+					<!--
+					<div th:if="${message}">
+						<h1 th:text="${message}"/>
+					</div>
+				  -->
 					</div>
 				</div>
 			</section>
