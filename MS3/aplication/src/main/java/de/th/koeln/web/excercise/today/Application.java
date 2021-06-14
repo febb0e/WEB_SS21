@@ -1,4 +1,4 @@
-package de.thkoeln.web.excercise.today.aplication;
+package de.th.koeln.web.excercise.today;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

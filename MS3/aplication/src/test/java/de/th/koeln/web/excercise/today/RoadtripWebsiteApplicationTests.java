@@ -1,10 +1,10 @@
-package de.thkoeln.web.excercise.today.aplication;
+package de.th.koeln.web.excercise.today;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AplicationApplicationTests {
+class RoadtripWebsiteApplicationTests {
 
 	@Test
 	void contextLoads() {
