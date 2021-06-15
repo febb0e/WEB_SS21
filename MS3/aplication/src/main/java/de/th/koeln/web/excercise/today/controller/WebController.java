@@ -51,8 +51,9 @@ public class WebController {
         Post post;
         try {
             post = new Post(date,  title, description, image.getBytes());
+            postRepository.save(post);
         } catch (Exception e) {
-            redirectAttrs.addFlashAttribute("error", "Upload fehlgeschlagen!");
+            redirectAttrs.addFlashAttribute("failure", "Upload fehlgeschlagen!");
             return "redirect:/failure";
         }
         redirectAttrs.addFlashAttribute("success", "Upload erfolgreich vom Post: ");

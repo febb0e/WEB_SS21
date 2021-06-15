@@ -1,9 +1,6 @@
 package de.th.koeln.web.excercise.today.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,8 +12,10 @@ public class Post {
     private Date date;
     private String title;
     private String description;
+    @Lob
     private byte[] image;
 
+    public Post() {}
     public Post(Date date, String title, String description, byte[] image) {
         this.date = date;
         this.title = title;

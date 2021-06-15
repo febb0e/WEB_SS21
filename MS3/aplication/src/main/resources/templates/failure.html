@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Upload new content</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>An error occurred</title>
+    <link rel="stylesheet" href="styles/style.css" />
     <script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <link rel="stylesheet" href="../css/cards.css"> </head>
@@ -33,17 +33,46 @@
     </div>
   </nav>
   <!-- Navbar End -->
-  <div class="success-failure">
-    <div class="column has-text-centered">
-      <div class="subtitle" role="alert" th:text="${failure}" th:if="${failure}"></div>
+  <div class="page-container">
+    <div class="content-container">
+      <section class="section">
+        <div class="input-container">
+          <div class="section">
+            <div class="columns">
+              <div class="column has-text-centered">
+                <div class="column">
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="section">
+                <div class="field">
+                </div>
+                <div class="field">
+                  <div class="success-failure">
+                    <div class="column has-text-centered">
+                      <div class="subtitle" role="alert" th:text="${failure}" th:if="${failure}"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                </div>
+                <div class="file has-name is-centered">
+                </div>
+                <div class="section has-text-centered"> <a class="button" href="index"> GO BACK </a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
+    <footer class="footer">
+      <div class="impressum has-text-centered">
+        <a class="footer-item" href="index"> <img src="img/dumbbell.png" alt="Logo" class="icon"> </a>
+        <div class="column"> <a class="footer-content" href="#"> Contact </a> <a class="footer-content" href="#"> Kontakt </a> <a class="footer-content" href="#"> Social Media </a> <a class="footer-content" href="#"> Improve Website </a> </div>
+      </div>
+    </footer>
   </div>
-  <footer class="footer">
-    <div class="impressum has-text-centered">
-      <a class="footer-item" href="index"> <img src="img/dumbbell.png" alt="Logo" class="icon"> </a>
-      <div class="column"> <a class="footer-content" href="#"> Contact </a> <a class="footer-content" href="#"> Kontakt </a> <a class="footer-content" href="#"> Social Media </a> <a class="footer-content" href="#"> Improve Website </a> </div>
-    </div>
-  </footer>
   </body>
   </html>
 </DOCTYPE>
