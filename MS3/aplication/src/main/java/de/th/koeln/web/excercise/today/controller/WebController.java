@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.IOException;
 import java.util.Date;
 
 @Controller
@@ -31,23 +30,33 @@ public class WebController {
     public String posts() {
         return "posts";
     }
+    @GetMapping("/post1")
+    public String post1() { return "post1"; }
+    @GetMapping("post2")
+    public String post2() { return "post2"; }
+    @GetMapping("post3")
+    public String post3() { return "post3"; }
     @GetMapping("/upload")
     public String upload() {
         return "upload";
     }
     @GetMapping("/success")
     public String success() { return "success"; }
+    @GetMapping("/failure")
+    public String failure() { return "failure"; }
     @PostMapping("/upload")
     public String formControllerEnc(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date, @RequestPart("title") String title,
                                     @RequestPart("description") String description , @RequestPart("image") MultipartFile image,
                                     RedirectAttributes redirectAttrs) {
+        Post post;
         try {
-            Post post = new Post(date,  title, description, image.getBytes());
-        } catch (IOException e) {
-            redirectAttrs.addFlashAttribute("error", "Upload fehlgeschlagen");
-            return "redirect:/upload";
+            post = new Post(date,  title, description, image.getBytes());
+        } catch (Exception e) {
+            redirectAttrs.addFlashAttribute("error", "Upload fehlgeschlagen!");
+            return "redirect:/failure";
         }
-        redirectAttrs.addFlashAttribute("success", "Upload erfolgreich!");
+        redirectAttrs.addFlashAttribute("success", "Upload erfolgreich vom Post: ");
+        redirectAttrs.addFlashAttribute("post", post.getTitle());
         return "redirect:/success";
     }
 

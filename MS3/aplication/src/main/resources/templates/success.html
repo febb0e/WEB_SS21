@@ -6,37 +6,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Upload new content</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/style.css" />
     <script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <link rel="stylesheet" href="../css/cards.css"> </head>
 
   <body>
-  <!-- Navbar Setup -->
-  <nav class="navbar">
-    <div class="navbar-brand">
-      <!-- INSERT LINK TO LANDING PAGE -->
-      <a class="navbar-item" href="index"> <img src="img/dumbbell.png" alt="Logo" class="icon"> </a>
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"> <span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>
+<!-- Navbar Setup -->
+<nav class="navbar">
+  <div class="navbar-brand">
+    <!-- INSERT LINK TO LANDING PAGE -->
+    <a class="navbar-item" href="index"> <img src="img/dumbbell.png" alt="Logo" class="icon"> </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"> <span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>
+  </div>
+  <div id="navbarSetup" class="navbar-menu">
+    <div class="navbar-end">
+      <!-- Link of Subpages --><a class="navbar-item" href="index">
+      HOME
+    </a> <a class="navbar-item" href="posts">
+      POSTS
+    </a> <a class="navbar-item" href="upload">
+      UPLOAD
+    </a>
+      <!-- End Linking -->
     </div>
-    <div id="navbarSetup" class="navbar-menu">
-      <div class="navbar-end">
-        <!-- Link of Subpages --><a class="navbar-item" href="index">
-        HOME
-      </a> <a class="navbar-item" href="posts">
-        POSTS
-      </a> <a class="navbar-item" href="upload">
-        UPLOAD
-      </a>
-        <!-- End Linking -->
+  </div>
+</nav>
+<!-- Navbar End -->
+<div class="page-container">
+  <div class="content-container">
+    <section class="section">
+      <div class="input-container">
+        <div class="section">
+          <div class="columns">
+            <div class="column has-text-centered">
+              <div class="column">
+              </div>
+            </div>
+          </div>
+            <div class="container">
+              <div class="section">
+                <div class="field">
+                </div>
+                <div class="field">
+                  <div class="success-failure">
+                    <div class="column has-text-centered">
+                      <div class="subtitle" role="alert" th:text="${success}" th:if="${success}"></div>
+                      <div class="subtitle" th:text="${post}" th:if="${post}"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                </div>
+                <div class="file has-name is-centered">
+                </div>
+                <div class="section has-text-centered"> <a class="button" href="index"> GO BACK </a> </div>
+              </div>
+            </div>
+        </div>
       </div>
-    </div>
-  </nav>
-  <!-- Navbar End -->
-  <div class="columns">
-    <div class="column has-text-centered">
-      <div class="subtitle" role="alert" th:text="${success}" th:if="${success}"></div>
-    </div>
+    </section>
   </div>
   <footer class="footer">
     <div class="impressum has-text-centered">
@@ -44,6 +73,7 @@
       <div class="column"> <a class="footer-content" href="#"> Contact </a> <a class="footer-content" href="#"> Kontakt </a> <a class="footer-content" href="#"> Social Media </a> <a class="footer-content" href="#"> Improve Website </a> </div>
     </div>
   </footer>
+</div>
 </body>
-</html>
+  </html>
 </DOCTYPE>

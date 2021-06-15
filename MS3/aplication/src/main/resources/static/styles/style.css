@@ -52,7 +52,7 @@ body {
 .background {
 	background-position: center;
 	background-repeat: no-repeat;
-	background-image: linear-gradient(rgba(255,255,255,0.8),rgba(0,0,0,0.8)), url("img/home.png");
+	background-image: linear-gradient(rgba(255,255,255,0.8),rgba(0,0,0,0.8)), url("../img/home.png");
 	height: 100%;
 }
 
