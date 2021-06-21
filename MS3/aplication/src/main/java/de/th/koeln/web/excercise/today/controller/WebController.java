@@ -12,10 +12,16 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 
 @Controller
 public class WebController {
+
+    private static final String UPLOAD_PATH = "/home/febbo/Dokumente/SS21/WEB/WEB_SS21/MS3/aplication/src/main/resources/static/post/";
 
     @Autowired
     private PostRepository postRepository;
@@ -45,20 +51,23 @@ public class WebController {
     @GetMapping("/failure")
     public String failure() { return "failure"; }
     @PostMapping("/upload")
-    public String formControllerEnc(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date, @RequestPart("title") String title,
+    public String uploadPost(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date, @RequestPart("title") String title,
                                     @RequestPart("description") String description , @RequestPart("image") MultipartFile image,
-                                    RedirectAttributes redirectAttrs) {
-        Post post;
-        try {
-            post = new Post(date,  title, description, image.getBytes());
-            postRepository.save(post);
-        } catch (Exception e) {
-            redirectAttrs.addFlashAttribute("failure", "Upload fehlgeschlagen!");
-            return "redirect:/failure";
+                                    RedirectAttributes redirectAttrs) throws IOException {
+
+        String imageType = image.getContentType();
+        if(imageType != "image/jpeg" && imageType != "image/png") {
+            redirectAttrs.addFlashAttribute("message", "Upload fehlgeschlagen - kein PNG oder JPEG Format!");
+            return "redirect:/upload";
         }
-        redirectAttrs.addFlashAttribute("success", "Upload erfolgreich vom Post: ");
-        redirectAttrs.addFlashAttribute("post", post.getTitle());
+        Path path = Paths.get(UPLOAD_PATH +image.getOriginalFilename());
+
+        Post post = new Post(date, title, description, path.toString());
+        postRepository.save(post);
+
+        redirectAttrs.addFlashAttribute("post", post);
+        Files.write(path, image.getBytes());
+        redirectAttrs.addFlashAttribute("success", "Upload erfolgreich vom Post: "+post.getTitle());
         return "redirect:/success";
     }
-
 }

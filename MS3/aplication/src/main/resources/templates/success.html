@@ -53,6 +53,7 @@
                     <div class="column has-text-centered">
                       <div class="subtitle" role="alert" th:text="${success}" th:if="${success}"></div>
                       <div class="subtitle" th:text="${post}" th:if="${post}"></div>
+                      <figure class="image-16zu9"> <img th:src="@{'post/image' +@{post.image}}"> </figure>
                     </div>
                   </div>
                 </div>
