@@ -29,6 +29,8 @@ public class Post {
         this.image = image;
     }
 
+    public Long getId() { return id; }
+
     public Date getDate() {
         return date;
     }
@@ -44,6 +46,8 @@ public class Post {
     public String getImage() {
         return image;
     }
+
+    public void setId(Long id) { this.id = id; }
 
     public void setDate(Date date) {
         this.date = date;

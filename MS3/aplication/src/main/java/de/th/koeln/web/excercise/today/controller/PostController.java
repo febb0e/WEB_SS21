@@ -12,36 +12,33 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @RestController
-@RequestMapping("/posts/api/v1")
+@RequestMapping("/posts")
 public class PostController {
-
-    private static final String UPLOAD_PATH = "/home/febbo/Dokumente/SS21/WEB/WEB_SS21/MS3/aplication/src/main/resources/static/post/";
 
     @Autowired
     PostRepository postRepo;
 
-    @GetMapping("/posts")
+    @GetMapping("/")
     public Iterable<Post> getPosts() {
         return postRepo.findAll();
     }
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/{id}")
     public Post getPostById(@PathVariable(value="id") Long postId) {
         return postRepo.findById(postId).orElse(new PostNotFoundException(postId));
     }
 
-    @GetMapping(value = "/{id}/img", produces = MediaType.IMAGE_JPEG_VALUE)
-
-    @PostMapping("/posts")
+    @PostMapping("/")
     public Post postPosts(@RequestBody Post post) {
         Post postWithId = postRepo.save(post);
         return postWithId;
     }
 
-    public byte[] getImg(@PathVariable(value= "id") Long postId, @PathVariable(value="image") String image) {
+    @GetMapping(value = "/{id}/img", produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] getImg(@PathVariable(value= "id") Long postId) {
         try{
             Post post = postRepo.findById(postId).orElse(new PostNotFoundException(postId));
-            Path path = Paths.get(UPLOAD_PATH + image);
+            Path path = Paths.get(post.getImage());
             return Files.readAllBytes(path);
         } catch(IOException e) {
                 System.out.println(e);

@@ -23,7 +23,7 @@
     <div class="navbar-end">
       <!-- Link of Subpages --><a class="navbar-item" href="index">
       HOME
-    </a> <a class="navbar-item" href="posts">
+    </a> <a class="navbar-item" href="feed">
       POSTS
     </a> <a class="navbar-item" href="upload">
       UPLOAD
@@ -52,8 +52,7 @@
                   <div class="success-failure">
                     <div class="column has-text-centered">
                       <div class="subtitle" role="alert" th:text="${success}" th:if="${success}"></div>
-                      <div class="subtitle" th:text="${post}" th:if="${post}"></div>
-                      <figure class="image-16zu9"> <img th:src="@{'post/image' +@{post.image}}"> </figure>
+                      <figure class="image-16zu9"> <img th:src="@{${image}}"> </figure>
                     </div>
                   </div>
                 </div>

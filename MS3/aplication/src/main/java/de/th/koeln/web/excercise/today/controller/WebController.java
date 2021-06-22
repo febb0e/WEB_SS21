@@ -32,9 +32,9 @@ public class WebController {
     }
     @GetMapping("/index")
     public String index() { return "index"; }
-    @GetMapping("/posts")
-    public String posts() {
-        return "posts";
+    @GetMapping("/feed")
+    public String feed() {
+        return "feed";
     }
     @GetMapping("/post1")
     public String post1() { return "post1"; }
@@ -56,7 +56,8 @@ public class WebController {
                                     RedirectAttributes redirectAttrs) throws IOException {
 
         String imageType = image.getContentType();
-        if(imageType != "image/jpeg" && imageType != "image/png") {
+
+        if(!imageType.equals("image/jpeg") && !imageType.equals("image/png")) {
             redirectAttrs.addFlashAttribute("message", "Upload fehlgeschlagen - kein PNG oder JPEG Format!");
             return "redirect:/upload";
         }
@@ -68,6 +69,7 @@ public class WebController {
         redirectAttrs.addFlashAttribute("post", post);
         Files.write(path, image.getBytes());
         redirectAttrs.addFlashAttribute("success", "Upload erfolgreich vom Post: "+post.getTitle());
+        redirectAttrs.addFlashAttribute("image", "post/"+image.getOriginalFilename());
         return "redirect:/success";
     }
 }
