@@ -12,7 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/api/posts")
 public class PostController {
 
     @Autowired
@@ -38,7 +38,7 @@ public class PostController {
     public byte[] getImg(@PathVariable(value= "id") Long postId) {
         try{
             Post post = postRepo.findById(postId).orElse(new PostNotFoundException(postId));
-            Path path = Paths.get(post.getImage());
+            Path path = Paths.get(String.valueOf(WebController.path));
             return Files.readAllBytes(path);
         } catch(IOException e) {
                 System.out.println(e);
