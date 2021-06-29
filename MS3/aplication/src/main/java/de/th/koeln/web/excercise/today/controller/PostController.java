@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.nio.file.Files;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -39,7 +41,17 @@ public class PostController {
         try{
             Post post = postRepo.findById(postId).orElse(new PostNotFoundException(postId));
             Path path = Paths.get(String.valueOf(WebController.path));
-            return Files.readAllBytes(path);
+
+            //Resize all Images to 960 x 540 Pixels
+            BufferedImage input = ImageIO.read(new File(path.toString()));
+            BufferedImage output = new BufferedImage(960, 540, input.getType());
+            Graphics2D resize = output.createGraphics();
+            resize.drawImage(input, 0,0, 960, 540, null);
+            resize.dispose();
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            ImageIO.write(output, "png", out);
+            byte [] image = out.toByteArray();
+            return image;
         } catch(IOException e) {
                 System.out.println(e);
             }

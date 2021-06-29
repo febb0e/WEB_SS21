@@ -17,6 +17,8 @@ public class Post {
     private LocalDate date;
     @ApiModelProperty(required = true, notes="Ttile of action in post", example="My new post title")
     private String title;
+    @Lob
+    @Column(columnDefinition = "LONGVARCHAR")
     @ApiModelProperty(required = true, notes="Description of what happend in the post", example="Here is described what was going on")
     private String description;
     @Lob

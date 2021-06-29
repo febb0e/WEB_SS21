@@ -11,8 +11,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -37,8 +40,8 @@ public class WebController {
     public String index() { return "index"; }
     @GetMapping("/feed")
     public String feed(Model model) {
-        model.addAttribute("current", postRepo.findFirst3ByOrderByIdDesc());
-        model.addAttribute("all", postRepo.findAllByOrderByIdDesc());
+        //model.addAttribute("current", postRepo.findFirst3ByOrderByIdDesc());
+        model.addAttribute("post", postRepo.findAllByOrderByIdDesc());
         return "feed";
     }
     @GetMapping("/post1")
@@ -51,14 +54,15 @@ public class WebController {
     public String upload() {
         return "upload";
     }
-    @GetMapping("/failure")
-    public String failure() { return "failure"; }
     @PostMapping("/upload")
     public String uploadPost(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @RequestPart("title") String title,
                              @RequestPart("description") String description , @RequestPart("image") MultipartFile image,
                              RedirectAttributes redirectAttrs) throws IOException {
 
         String imageType = image.getContentType();
+        InputStream in = image.getInputStream();
+        BufferedImage originalImage = ImageIO.read(in);
+        originalImage.getSubimage(0,0,960,540);
 
         if(!imageType.equals("image/jpeg") && !imageType.equals("image/png")) {
             redirectAttrs.addFlashAttribute("message", "Upload fehlgeschlagen - kein PNG oder JPEG Format!");
@@ -74,11 +78,18 @@ public class WebController {
         postRepo.save(post);
         Files.write(path, image.getBytes());
         redirectAttrs.addFlashAttribute("postId", post.getId());
-        redirectAttrs.addFlashAttribute("success", "Upload erfolgreich vom Post: "+post.getTitle());
-        redirectAttrs.addFlashAttribute("image", WebController.path);
+        redirectAttrs.addFlashAttribute("success", "Upload erfolgreich!");
+        redirectAttrs.addFlashAttribute("title", post.getTitle());
+        redirectAttrs.addFlashAttribute("date", post.getDate());
+        redirectAttrs.addFlashAttribute("description", post.getDescription());
+        redirectAttrs.addFlashAttribute("image", post.getImageLink());
         return "redirect:/success";
     }
+
     @GetMapping("/success")
+    public String success() { return "success"; }
+
+    /*@GetMapping("/success")
     public String success(HttpServletRequest request, RedirectAttributes redirectAttrs, Model model) {
         model.addAttribute("current", postRepo.findFirst3ByOrderByIdDesc());
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
@@ -86,18 +97,18 @@ public class WebController {
             Long id = (Long) inputFlashMap.get("postId");
             Post post = postRepo.findById(id).orElse(new PostNotFoundException(id));
             model.addAttribute("post", post);
-            return "post";
+            return "successs";
         } else {
             redirectAttrs.addFlashAttribute("message", "Error loading Post");
             return "redirect:/uplaod";
         }
-    }
+    }*/
     @GetMapping("/posts/{id}")
     public String getPost(@PathVariable Long id, Model model, RedirectAttributes redirectAttrs) {
         try {
             Post post = postRepo.findById(id).orElse(new PostNotFoundException(id));
             model.addAttribute("post", post);
-            model.addAttribute("current", postRepo.findFirst3ByOrderByIdDesc());
+            //model.addAttribute("current", postRepo.findFirst3ByOrderByIdDesc());
             return "post";
         } catch(Exception e) {
             e.printStackTrace();

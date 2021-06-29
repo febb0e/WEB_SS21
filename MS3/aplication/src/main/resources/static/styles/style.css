@@ -42,6 +42,10 @@ body {
 	border-color: #0e2936;
 }
 
+.column {
+    margin: 0 auto;
+}
+
 .subtitle-homepage {
 	color: #174459;
 	text-align: center;
@@ -110,11 +114,12 @@ body {
 }
 
 .post-content {
+    padding-bottom: 1.5rem;
 	text-align: center;
 	border-radius: 5px;
 	background-color: #266f91;
 	height: 100%;
-	min-width: 769px;
+	width: 769px;
 }
 
 .image-16zu9 {

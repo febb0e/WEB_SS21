@@ -49,39 +49,22 @@
 						</div>
 					</div>
 				</div>
-				<div class="post-line">
+				<div class="has-text-centered post-line">
+					<ul th:each = "post	:${post}">
 					<div class="column">
 						<div class="post-content">
-							<p class="date"> 16.01.2019</p>
+							<p class="date" th:text = "${post?.date}"></p>
 							<figure class="image-16zu9">
-								<a href="post1"> <img src="post/climb.png" alt="upload1"> </a>
-							</figure> <a class="post-title" href="post1"> Climbing in the mountains </a>
-							<p class="post-text"> We have been to the Rocky Mountains on a warm day while sun was setting.</p>
-							<p class="post-text"> Afterwards we went for camping and had Burritos </p>
+								<a href="/post/${post?.id}"> <img th:src="${post?.imageLink}"> </a>
+							</figure> <a class="post-title" href="post/${post?.id}" th:text = "${post?.title}"></a>
+							<p class="post-text" th:text="${post.description}"></p>
 						</div>
 					</div>
-					<div class="column">
-						<div class="post-content">
-							<p class="date"> 21.12.2019</p>
-							<figure class="image-16zu9">
-								<a href="post2"> <img src="post/ski.png" alt="upload2"> </a>
-							</figure> <a class="post-title" href="post2"> Skiing in Sankt Anton </a>
-							<p class="post-text"> Met two friends in Sankt Anton to go Freeskiing.</p>
-							<p class="post-text"> Freeriding was lots of fun in the fresh powder while the sun came out. </p>
-						</div>
+					</ul>
 					</div>
-					<div class="column">
-						<div class="post-content">
-							<p class="date"> 01.03.2020</p>
-							<figure class="image-16zu9">
-								<a href="post3"> <img src="post/surf.png" alt="upload3"> </a>
-							</figure> <a class="post-title" href="post3"> Surfing in Hossegor</a>
-							<p class="post-text"> Was on a Roadtrip on my own on the french coast.</p>
-							<p class="post-text"> Hossegor is a must visit and the waves were really beginner friendly this day. </p>
-						</div>
-					</div>
-				</div>
+					</ul>
 			</section>
+		</div>
 		</div>
 		<footer class="footer">
 			<div class="impressum has-text-centered">

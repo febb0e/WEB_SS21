@@ -50,22 +50,26 @@
                 </div>
                 <div class="field">
                   <div class="success-failure">
-                    <div class="column has-text-centered">
-                      <div class="subtitle" role="alert" th:text="${success}" th:if="${success}"></div>
-                      <figure class="image-16zu9"> <img th:src="@{${image}}"> </figure>
+                    <div class="column has-text-centered post-content">
+                      <div class="title" role="alert" th:text="${success}" th:if="${success}"></div>
+                          <h1 class="subtitle" th:text="${title}"></h1>
+                          <p class="date" th:text="${date}"></p>
+                          <figure class="image-16zu9"><img th:src="${image}" alt="upload+${postId}"></figure>
+                          <div class="column"></div>
+                          <p class="post-text" th:text="${description}"></p>
+                    </div>
                     </div>
                   </div>
                 </div>
-                <div class="field">
+                <div class="section has-text-centered">
+                  <a class="button" href="index"> GO HOME </a>
+                  <a class="button" href="feed">VIEW ALL</a>
                 </div>
-                <div class="file has-name is-centered">
-                </div>
-                <div class="section has-text-centered"> <a class="button" href="index"> GO BACK </a> </div>
               </div>
             </div>
         </div>
-      </div>
     </section>
+  </div>
   </div>
   <footer class="footer">
     <div class="impressum has-text-centered">
