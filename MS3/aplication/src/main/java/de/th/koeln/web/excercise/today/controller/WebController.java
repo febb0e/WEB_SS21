@@ -61,7 +61,7 @@ public class WebController {
 
         String imageType = image.getContentType();
         InputStream in = image.getInputStream();
-        BufferedImage originalImage = ImageIO.read(in);
+        BufferedImage originalImage = ImageIO.read(getClass().getResource(String.valueOf(in)    ));
         originalImage.getSubimage(0,0,960,540);
 
         if(!imageType.equals("image/jpeg") && !imageType.equals("image/png")) {

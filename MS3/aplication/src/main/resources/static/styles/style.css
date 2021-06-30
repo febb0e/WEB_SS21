@@ -18,7 +18,7 @@ body {
 }
 
 .page-container {
-	position: relative;
+	position: center;
 	min-height: 100%;
 }
 
@@ -44,6 +44,7 @@ body {
 
 .column {
     margin: 0 auto;
+    width: 50%;
 }
 
 .subtitle-homepage {
@@ -108,18 +109,25 @@ body {
 }
 
 .post-line {
+    margin: 0 auto;
+    width: 50%;
 	display: flex;
 	flex-wrap: wrap;
 	padding-bottom: 7rem;
 }
 
 .post-content {
-    padding-bottom: 1.5rem;
 	text-align: center;
 	border-radius: 5px;
 	background-color: #266f91;
 	height: 100%;
 	width: 769px;
+	padding-bottom: 3rem;
+}
+
+.seperator {
+    height: 3rem;
+    background-color: red;
 }
 
 .image-16zu9 {

@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="styles/style.css" />
 	<script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	<link rel="stylesheet" href="../css/cards.css"> </head>
 
 <body>
 	<!-- Navbar Setup -->
@@ -49,20 +48,18 @@
 						</div>
 					</div>
 				</div>
-				<div class="has-text-centered post-line">
+				<div class="column has-text-centered post-line">
 					<ul th:each = "post	:${post}">
-					<div class="column">
+						<div class ="seperator"></div>
 						<div class="post-content">
 							<p class="date" th:text = "${post?.date}"></p>
 							<figure class="image-16zu9">
-								<a href="/post/${post?.id}"> <img th:src="${post?.imageLink}"> </a>
+								<a href="/post/${post?.id}"> <img th:src="${post.imageLink}"> </a>
 							</figure> <a class="post-title" href="post/${post?.id}" th:text = "${post?.title}"></a>
 							<p class="post-text" th:text="${post.description}"></p>
-						</div>
-					</div>
+							</div>
 					</ul>
-					</div>
-					</ul>
+				</div>
 			</section>
 		</div>
 		</div>
