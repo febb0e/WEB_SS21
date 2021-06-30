@@ -12,72 +12,65 @@
     <link rel="stylesheet" href="../css/cards.css"> </head>
 
   <body>
-<!-- Navbar Setup -->
-<nav class="navbar">
-  <div class="navbar-brand">
-    <!-- INSERT LINK TO LANDING PAGE -->
-    <a class="navbar-item" href="index"> <img src="img/dumbbell.png" alt="Logo" class="icon"> </a>
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"> <span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>
-  </div>
-  <div id="navbarSetup" class="navbar-menu">
-    <div class="navbar-end">
-      <!-- Link of Subpages --><a class="navbar-item" href="index">
-      HOME
-    </a> <a class="navbar-item" href="feed">
-      POSTS
-    </a> <a class="navbar-item" href="upload">
-      UPLOAD
-    </a>
-      <!-- End Linking -->
+  <!-- Navbar Setup -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <!-- INSERT LINK TO LANDING PAGE -->
+      <a class="navbar-item" href="index"> <img src="img/dumbbell.png" alt="Logo" class="icon"> </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"> <span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>
     </div>
-  </div>
-</nav>
-<!-- Navbar End -->
-<div class="page-container">
-  <div class="content-container">
-    <section class="section">
-      <div class="input-container">
-        <div class="section">
-          <div class="columns">
-            <div class="column has-text-centered">
-              <div class="column">
+    <div id="navbarSetup" class="navbar-menu">
+      <div class="navbar-end">
+        <!-- Link of Subpages --><a class="navbar-item" href="index">
+        HOME
+      </a> <a class="navbar-item" href="feed">
+        POSTS
+      </a> <a class="navbar-item" href="upload">
+        UPLOAD
+      </a>
+        <!-- End Linking -->
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+  <div class="page-container">
+    <div class="content-container">
+      <section class="section_post">
+        <div class="input-container">
+          <div class="section">
+            <div class="columns">
+              <div class="column has-text-centered">
+                <div class="column"> </div>
               </div>
             </div>
-          </div>
             <div class="container">
               <div class="section">
-                <div class="field">
-                </div>
-                <div class="field">
-                  <div class="success-failure">
-                    <div class="column has-text-centered post-content">
-                      <div class="title" role="alert" th:text="${success}" th:if="${success}"></div>
-                          <h1 class="subtitle" th:text="${title}"></h1>
-                          <p class="date" th:text="${date}"></p>
-                          <figure class="image-16zu9"><img th:src="${image}" alt="upload+${postId}"></figure>
-                          <div class="column"></div>
-                          <p class="post-text" th:text="${description}"></p>
-                    </div>
-                    </div>
+                <div class="success-failure">
+                  <div class="post-content">
+                    <div class="title" role="alert" th:text="${success}" th:if="${success}"></div>
+                    <h1 class="subtitle" th:text="${title}"></h1>
+                    <p class="date" th:text="${date}"></p>
+                    <figure class="image-16zu9"><img th:src="${image}" alt="upload+${postId}"></figure>
+                    <div class="column"></div>
+                    <p class="post-text" th:text="${description}"></p>
                   </div>
-                </div>
-                <div class="section has-text-centered">
-                  <a class="button" href="index"> GO HOME </a>
-                  <a class="button" href="feed">VIEW ALL</a>
                 </div>
               </div>
             </div>
+            <div class="section has-text-centered"> <a class="button" href="index"> GO HOME </a> <a class="button" href="feed">VIEW ALL</a> </div>
+          </div>
         </div>
-    </section>
+      </section>
+    </div>
   </div>
-  </div>
-  <footer class="footer">
+  <footer class="footer_feed">
     <div class="impressum has-text-centered">
       <a class="footer-item" href="index"> <img src="img/dumbbell.png" alt="Logo" class="icon"> </a>
       <div class="column"> <a class="footer-content" href="#"> Contact </a> <a class="footer-content" href="#"> Kontakt </a> <a class="footer-content" href="#"> Social Media </a> <a class="footer-content" href="#"> Improve Website </a> </div>
     </div>
   </footer>
-</div>
-</body>
+  </div>
+  </body>
+
   </html>
 </DOCTYPE>

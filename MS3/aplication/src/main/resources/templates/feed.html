@@ -1,16 +1,16 @@
 <DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+	<html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>View your posts</title>
-	<link rel="stylesheet" href="styles/style.css" />
-	<script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>View your posts</title>
+		<link rel="stylesheet" href="styles/style.css" />
+		<script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-<body>
+	<body>
 	<!-- Navbar Setup -->
 	<nav class="navbar">
 		<div class="navbar-brand">
@@ -21,18 +21,18 @@
 		<div id="navbarSetup" class="navbar-menu">
 			<div class="navbar-end">
 				<!-- Link of Subpages --><a class="navbar-item" href="index">
-            HOME
-          </a> <a class="navbar-item" href="posts">
-            POSTS
-          </a> <a class="navbar-item" href="upload">
-            UPLOAD
-          </a>
+				HOME
+			</a> <a class="navbar-item" href="feed">
+				POSTS
+			</a> <a class="navbar-item" href="upload">
+				UPLOAD
+			</a>
 				<!-- End Linking -->
 			</div>
 		</div>
 	</nav>
 	<!-- Navbar End -->
-	<div class="page-container">
+	<div class="page-container_feed">
 		<div class="content-container">
 			<section class="section">
 				<div class="container">
@@ -40,37 +40,34 @@
 						<div class="columns">
 							<div class="column has-text-centered">
 								<h1 class="title">
-                     HISTORY
-                  </h1>
+									HISTORY
+								</h1>
 								<div class="column">
 									<p class="subtitle"> Your previous Posts collected in your feed </p>
 								</div> <a class="button" href="upload">ADD NEW</a> </div>
 						</div>
 					</div>
 				</div>
-				<div class="column has-text-centered post-line">
-					<ul th:each = "post	:${post}">
-						<div class ="seperator"></div>
-						<div class="post-content">
-							<p class="date" th:text = "${post?.date}"></p>
-							<figure class="image-16zu9">
-								<a href="/post/${post?.id}"> <img th:src="${post.imageLink}"> </a>
-							</figure> <a class="post-title" href="post/${post?.id}" th:text = "${post?.title}"></a>
-							<p class="post-text" th:text="${post.description}"></p>
+				<div class="column has-text-centered">
+					<div class="post-line">
+						<ul th:each="post	:${post}">
+							<div class="seperator"></div>
+							<div class="post-content">
+								<p class="date" th:text="${post?.date}"></p>
+								<figure class="image-16zu9">
+									<a th:href="@{'/post/'+${post?.id}}"> <img th:src="${post?.imageLink}"> </a>
+								</figure>
+								<a class="post-title" th:href="@{'/post/'+${post?.id}}" th:text="${post?.title}"></a>
+								<p class="post-text" th:text="${post.description}"></p>
 							</div>
-					</ul>
+						</ul>
+						<div class="section has-text-centered"> <a class="button" href="index"> GO HOME </a> </div>
+					</div>
 				</div>
 			</section>
 		</div>
-		</div>
-		<footer class="footer">
-			<div class="impressum has-text-centered">
-				<a class="footer-item" href="index"> <img src="img/dumbbell.png" alt="Logo" class="icon"> </a>
-				<div class="column"> <a class="footer-content" href="#"> Impressum </a> <a class="footer-content" href="#"> Contact </a> <a class="footer-content" href="#"> Social Media </a> <a class="footer-content" href="#"> Improve Website </a> </div>
-			</div>
-		</footer>
 	</div>
-</body>
+	</body>
 
-</html>
+	</html>
 </DOCTYPE>

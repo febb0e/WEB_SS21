@@ -40,16 +40,9 @@ public class WebController {
     public String index() { return "index"; }
     @GetMapping("/feed")
     public String feed(Model model) {
-        //model.addAttribute("current", postRepo.findFirst3ByOrderByIdDesc());
         model.addAttribute("post", postRepo.findAllByOrderByIdDesc());
         return "feed";
     }
-    @GetMapping("/post1")
-    public String post1() { return "post1"; }
-    @GetMapping("/post2")
-    public String post2() { return "post2"; }
-    @GetMapping("/post3")
-    public String post3() { return "post3"; }
     @GetMapping("/upload")
     public String upload() {
         return "upload";
@@ -61,8 +54,13 @@ public class WebController {
 
         String imageType = image.getContentType();
         InputStream in = image.getInputStream();
-        BufferedImage originalImage = ImageIO.read(getClass().getResource(String.valueOf(in)    ));
-        originalImage.getSubimage(0,0,960,540);
+        BufferedImage originalImage = ImageIO.read(in);
+        if(originalImage.getHeight()>=540 && originalImage.getWidth()>=960) {
+            originalImage.getSubimage(0,0,960,540);
+        } else {
+            redirectAttrs.addFlashAttribute("success", "Bitte mindestens Bildformat 960 x 540 Pixel waehlen!");
+            return "redirect:/success";
+        }
 
         if(!imageType.equals("image/jpeg") && !imageType.equals("image/png")) {
             redirectAttrs.addFlashAttribute("message", "Upload fehlgeschlagen - kein PNG oder JPEG Format!");
@@ -89,27 +87,13 @@ public class WebController {
     @GetMapping("/success")
     public String success() { return "success"; }
 
-    /*@GetMapping("/success")
-    public String success(HttpServletRequest request, RedirectAttributes redirectAttrs, Model model) {
-        model.addAttribute("current", postRepo.findFirst3ByOrderByIdDesc());
-        Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
-        if(inputFlashMap != null) {
-            Long id = (Long) inputFlashMap.get("postId");
-            Post post = postRepo.findById(id).orElse(new PostNotFoundException(id));
-            model.addAttribute("post", post);
-            return "successs";
-        } else {
-            redirectAttrs.addFlashAttribute("message", "Error loading Post");
-            return "redirect:/uplaod";
-        }
-    }*/
-    @GetMapping("/posts/{id}")
+    @GetMapping("/post/{id}")
     public String getPost(@PathVariable Long id, Model model, RedirectAttributes redirectAttrs) {
         try {
             Post post = postRepo.findById(id).orElse(new PostNotFoundException(id));
             model.addAttribute("post", post);
             //model.addAttribute("current", postRepo.findFirst3ByOrderByIdDesc());
-            return "post";
+            return "/post";
         } catch(Exception e) {
             e.printStackTrace();
             redirectAttrs.addFlashAttribute("message", "Error loading Post");

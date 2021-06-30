@@ -1,17 +1,17 @@
 <DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+	<html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Upload new content</title>
-	<link rel="stylesheet" href="styles/style.css" />
-	<script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	<link rel="stylesheet" href="../css/cards.css"> </head>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Upload new content</title>
+		<link rel="stylesheet" href="styles/style.css" />
+		<script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<link rel="stylesheet" href="../css/cards.css"> </head>
 
-<body>
+	<body>
 	<!-- Navbar Setup -->
 	<nav class="navbar">
 		<div class="navbar-brand">
@@ -22,12 +22,12 @@
 		<div id="navbarSetup" class="navbar-menu">
 			<div class="navbar-end">
 				<!-- Link of Subpages --><a class="navbar-item" href="index">
-             HOME
-           </a> <a class="navbar-item" href="posts">
-             POSTS
-           </a> <a class="navbar-item" href="upload">
-             UPLOAD
-           </a>
+				HOME
+			</a> <a class="navbar-item" href="feed">
+				POSTS
+			</a> <a class="navbar-item" href="upload">
+				UPLOAD
+			</a>
 				<!-- End Linking -->
 			</div>
 		</div>
@@ -41,45 +41,46 @@
 						<div class="columns">
 							<div class="column has-text-centered">
 								<h1 class="title">
-                    UPLOAD
-                  </h1>
+									UPLOAD
+								</h1>
 								<div class="column">
 									<p class="subtitle"> Create a new Post </p>
 								</div>
 							</div>
 						</div>
 						<form action="/upload" method="post" enctype="multipart/form-data">
-						<div class="container">
-							<div class="section">
-								<div class="field">
-									<label class="label"> Enter Date </label>
-									<div class="control">
-										<input id="date" name="date" class="date" type="date" required> </div>
-								</div>
-								<div class="field">
-									<label class="label"> Title </label>
-									<div class="control">
-										<input id="title" name="title" type="text" placeholder="Title of your post" required> </div>
-								</div>
-								<div class="field">
-									<label class="label"> Description </label>
-									<div class="control">
-										<textarea id="description" name="description" class="textarea" type="textarea is-large" placeholder="Description goes here" rows="8" required></textarea>
+							<div class="container">
+								<div class="section">
+									<div class="field">
+										<label class="label"> Enter Date </label>
+										<div class="control">
+											<input id="date" name="date" class="date" type="date" required> </div>
 									</div>
-								</div>
-								<div class="file has-name is-centered">
-									<label class="file-label">
-										<input class="file-input" type="file" name="image" required> <span class="file-cta">
+									<div class="field">
+										<label class="label"> Title </label>
+										<div class="control">
+											<input id="title" name="title" type="text" placeholder="Title of your post" required> </div>
+									</div>
+									<div class="field">
+										<label class="label"> Description </label>
+										<div class="control">
+											<textarea id="description" name="description" class="textarea" type="textarea is-large" placeholder="Description goes here" rows="8" required></textarea>
+										</div>
+									</div>
+									<div class="file has-name is-centered">
+										<label class="file-label">
+											<input class="file-input" type="file" name="image" required> <span class="file-cta">
                      <span class="file-icon">
                        <i class="fas fa-upload"></i>
                      </span> <span class="file-label"> Choose image</span> </span> <span class="file-name">
                    YourImageUpload.png
                  </span> </label>
+									</div>
+									<div class="section has-text-centered">
+										<input type="submit" class="button" value="UPLOAD"> <a class="button" href="index"> CANCEL </a> </div>
 								</div>
-								<div class="section has-text-centered"> <input type="submit" class="button" value="UPLOAD"> <a class="button" href="index"> CANCEL </a> </div>
 							</div>
-						</div>
-					</form>
+						</form>
 					</div>
 				</div>
 			</section>
@@ -91,7 +92,7 @@
 			</div>
 		</footer>
 	</div>
-</body>
+	</body>
 
-</html>
+	</html>
 </DOCTYPE>

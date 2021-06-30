@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -40,18 +41,9 @@ public class PostController {
     public byte[] getImg(@PathVariable(value= "id") Long postId) {
         try{
             Post post = postRepo.findById(postId).orElse(new PostNotFoundException(postId));
-            Path path = Paths.get(String.valueOf(WebController.path));
+            Path path = Paths.get(post.getImage()); //String.valueOf(WebController.path)
 
-            //Resize all Images to 960 x 540 Pixels
-            BufferedImage input = ImageIO.read(new File(path.toString()));
-            BufferedImage output = new BufferedImage(960, 540, input.getType());
-            Graphics2D resize = output.createGraphics();
-            resize.drawImage(input, 0,0, 960, 540, null);
-            resize.dispose();
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            ImageIO.write(output, "png", out);
-            byte [] image = out.toByteArray();
-            return image;
+            return Files.readAllBytes(path);
         } catch(IOException e) {
                 System.out.println(e);
             }
