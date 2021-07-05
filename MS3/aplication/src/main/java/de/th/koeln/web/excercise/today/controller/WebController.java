@@ -38,14 +38,14 @@ public class WebController {
     }
     @GetMapping("/index")
     public String index() { return "index"; }
+    @GetMapping("/upload")
+    public String upload() { return "upload"; }
+    @GetMapping("/statistics")
+    public String statistics() { return "statistics"; }
     @GetMapping("/feed")
     public String feed(Model model) {
         model.addAttribute("post", postRepo.findAllByOrderByIdDesc());
         return "feed";
-    }
-    @GetMapping("/upload")
-    public String upload() {
-        return "upload";
     }
     @PostMapping("/upload")
     public String uploadPost(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @RequestPart("title") String title,

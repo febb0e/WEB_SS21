@@ -1,0 +1,65 @@
+<DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>View your posts</title>
+        <link rel="stylesheet" href="styles/style.css"/>
+        <script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <body>
+    <!-- Navbar Setup -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <!-- INSERT LINK TO LANDING PAGE -->
+            <a class="navbar-item" href="index"> <img src="img/dumbbell.png" alt="Logo" class="icon"> </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"> <span
+                    aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>
+        </div>
+        <div id="navbarSetup" class="navbar-menu">
+            <div class="navbar-end">
+                <!-- Link of Subpages --><a class="navbar-item" href="index">
+                HOME
+            </a> <a class="navbar-item" href="feed">
+                POSTS
+            </a> <a class="navbar-item" href="upload">
+                UPLOAD
+            </a>
+                <!-- End Linking -->
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <div class="page-container">
+        <div class="content-container">
+            <section class="section">
+                <div class="container">
+                    <div class="section">
+                        <div class="columns">
+                            <div class="column has-text-centered">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Date</th>
+                                        <th>API Link IMG</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="posts"></tbody>
+                                    <script src="js/statistics.js">
+                                    </script>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    </body>
+    </html>
+</DOCTYPE>
