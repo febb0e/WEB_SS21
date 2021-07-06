@@ -8,10 +8,10 @@ fetch("/api/posts/")
                         var temp = "";
                         data.forEach((post) => {
                             temp += "<tr>";
-                            temp += "<td>" + post.id + "</td>";
-                            temp += "<td>" + post.title + "</td>";
-                            temp += "<td>" + post.date + "</td>";
-                            temp += "<td>" + post.imageLink + "</td>";
+                                temp += "<td>" + post.id + "</td>";
+                                temp += "<td>" + post.title + "</td>";
+                                temp += "<td>" + post.date + "</td>";
+                                temp += "<td>" + post.imageLink + "</td>";
                             temp += "</tr>";
                         });
                         document.getElementById('posts').innerHTML = temp;
