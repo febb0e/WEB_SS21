@@ -34,35 +34,33 @@
         </div>
     </nav>
     <!-- Navbar End -->
-    <div class="page-container">
+    <div class="page-container_feed">
         <div class="content-container">
             <section class="section">
                 <div class="container">
                     <table class="statistics">
                         <thead>
                         <tr>
-                            <th class="statistics has-text-centered">ID</th>
                             <th class="statistics has-text-centered">Title</th>
                             <th class="statistics has-text-centered">Date</th>
                             <th class="statistics has-text-centered">API Link IMG</th>
                         </tr>
                         </thead>
                         <tbody id="posts"></tbody>
-                        <script src="js/statistics.js">
-                        </script>
+                        <script src="js/statistics.js"></script>
                     </table>
+                </div>
+                <div class="container">
+                    <div class="statistics has-text-centered">
+                        <div class="title">UPLOADS SINCE YOU STARTED</div>
+                        <div class="subtitle" id="number">
+                            <script src="js/count.js"></script>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
-        <footer class="footer">
-            <div class="impressum has-text-centered">
-                <a class="footer-item" href="/index"> <img src="/img/dumbbell.png" alt="Logo" class="icon"> </a>
-                <div class="column"><a class="footer-content" href="#"> Contact </a> <a class="footer-content" href="#">
-                    Kontakt </a> <a class="footer-content" href="#"> Social Media </a> <a class="footer-content"
-                                                                                          href="#"> Improve Website </a>
-                </div>
-            </div>
-        </footer>
+    </div>
     </div>
     </body>
     </html>
