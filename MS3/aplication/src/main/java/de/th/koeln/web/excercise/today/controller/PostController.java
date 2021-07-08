@@ -41,7 +41,7 @@ public class PostController {
     public byte[] getImg(@PathVariable(value= "id") Long postId) {
         try{
             Post post = postRepo.findById(postId).orElse(new PostNotFoundException(postId));
-            Path path = Paths.get(post.getImage()); //String.valueOf(WebController.path)
+            Path path = Paths.get(post.getImage());
 
             return Files.readAllBytes(path);
         } catch(IOException e) {

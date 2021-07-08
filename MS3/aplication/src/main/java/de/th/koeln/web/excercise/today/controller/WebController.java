@@ -48,17 +48,18 @@ public class WebController {
         return "feed";
     }
     @PostMapping("/upload")
-    public String uploadPost(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @RequestPart("title") String title,
+    public String uploadPost(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+                             @RequestPart("duration") String duration, @RequestPart("title") String title,
                              @RequestPart("description") String description , @RequestPart("image") MultipartFile image,
                              RedirectAttributes redirectAttrs) throws IOException {
 
         String imageType = image.getContentType();
         InputStream in = image.getInputStream();
         BufferedImage originalImage = ImageIO.read(in);
-        if(originalImage.getHeight()>=540 && originalImage.getWidth()>=960) {
-            originalImage.getSubimage(0,0,960,540);
+        if(originalImage.getWidth() >= 640 && originalImage.getHeight() >= 480) {
+            originalImage.getSubimage(0,0,640,480);
         } else {
-            redirectAttrs.addFlashAttribute("success", "Bitte mindestens Bildformat 960 x 540 Pixel waehlen!");
+            redirectAttrs.addFlashAttribute("success", "Bitte mindestens Bildformat 640 x 480 Pixel waehlen!");
             return "redirect:/success";
         }
 
@@ -70,15 +71,16 @@ public class WebController {
         String imageName = uuid+"_"+image.getOriginalFilename();
         path = Paths.get("src/main/resources/static/uploads/"+imageName);
 
-        Post post = new Post(date, title, description, path.toString());
+        Post post = new Post(date, Float.parseFloat(duration), title, description, path.toString());
         postRepo.save(post);
         post.generateImageLink(post.getId() != null);
         postRepo.save(post);
         Files.write(path, image.getBytes());
         redirectAttrs.addFlashAttribute("postId", post.getId());
         redirectAttrs.addFlashAttribute("success", "Upload erfolgreich!");
-        redirectAttrs.addFlashAttribute("title", post.getTitle());
         redirectAttrs.addFlashAttribute("date", post.getDate());
+        redirectAttrs.addFlashAttribute("title", post.getTitle());
+        redirectAttrs.addFlashAttribute("duration", post.getDuration());
         redirectAttrs.addFlashAttribute("description", post.getDescription());
         redirectAttrs.addFlashAttribute("image", post.getImageLink());
         return "redirect:/success";

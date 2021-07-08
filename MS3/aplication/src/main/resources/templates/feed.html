@@ -61,7 +61,11 @@
                                     <a th:href="@{'/post/'+${post?.id}}"> <img th:src="${post?.imageLink}"> </a>
                                 </figure>
                                 <a class="post-title" th:href="@{'/post/'+${post?.id}}" th:text="${post?.title}"></a>
-                                <p class="post-text" th:text="${post.description}"></p>
+                                <div class="column"></div>
+                                <p class="post-title">Duration: </p>
+                                <p class="post-text" th:text="${post?.duration}"></p>
+                                <div class="column"></div>
+                                <p class="post-text" th:text="${post?.description}"></p>
                             </div>
                         </ul>
                         <div class="section has-text-centered"><a class="button" href="index"> GO HOME </a></div>

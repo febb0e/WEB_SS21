@@ -13,22 +13,20 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ApiModelProperty(required = true, notes="Date of post creation", example="21.06.2021")
     private LocalDate date;
-    @ApiModelProperty(required = true, notes="Ttile of action in post", example="My new post title")
+    private float duration;
     private String title;
     @Lob
     @Column(columnDefinition = "LONGVARCHAR")
-    @ApiModelProperty(required = true, notes="Description of what happend in the post", example="Here is described what was going on")
     private String description;
     @Lob
-    @ApiModelProperty(required = true)
     private String image;
     private String imageLink;
 
     public Post() {}
-    public Post(LocalDate date, String title, String description, String image) {
+    public Post(LocalDate date, float duration, String title, String description, String image) {
         this.date = date;
+        this.duration = duration;
         this.title = title;
         this.description = description;
         this.image = image;
@@ -43,6 +41,9 @@ public class Post {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    public float getDuration() { return duration; }
+    public void setDuration(float duration) { this.duration = duration; }
 
     public String getTitle() {
         return title;

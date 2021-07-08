@@ -50,6 +50,8 @@
                                     <div class="post-content">
                                         <div class="title" role="alert" th:text="${success}" th:if="${success}"></div>
                                         <h1 class="subtitle" th:text="${title}"></h1>
+                                        <p class="post-title">Duration:</p>
+                                        <p class="post-text" th:text="${duration}"></h1>
                                         <p class="date" th:text="${date}"></p>
                                         <figure class="image-16zu9"><img th:src="${image}" alt="upload+${postId}">
                                         </figure>

@@ -49,6 +49,8 @@
                                 <div class="success-failure">
                                     <div class="post-content">
                                         <h1 class="subtitle" th:text="${post?.title}"></h1>
+                                        <p class="post-title">Duration: </p>
+                                        <p class="post-text" th:text="${post?.duration}"></p>
                                         <p class="date" th:text="${post?.date}"></p>
                                         <figure class="image-16zu9"><img th:src="${post?.imageLink}"></figure>
                                         <div class="column"></div>
