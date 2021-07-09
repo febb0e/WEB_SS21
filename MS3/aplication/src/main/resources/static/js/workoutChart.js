@@ -1,63 +1,53 @@
-var id = document.getElementById('workoutChart');
+const url = "/api/posts/";
 
-const MONTHS = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-];
+const MONTHS = ["JAN","FEB","MAR","APR",
+                "MAY","JUN","JUL","AUG",
+                "SEP","OCT","NOV","DEC"];
 
-const inputs = {
-    min: 0,
-    max: 200,
-    decimals: 2,
-    continuity: 1
-};
+const value = new Array();
+const chart = new Array();
+const xVal = [];
+const yVal = [];
 
-const json = fetch('/api/posts/')
-                .then(res => res.json())
-                .then((out) => {
-                    return out;
-                });
-
-const countDuration = () => {
-    for(var i = 0; i < json.length; i++) {
-        console.log(json.duration)
-    }
-}
-
-const generateLabels = () => {
-    return MONTHS;
-}
-
-const data = {
-    labels: generateLabels(),
-    datasets: [{
-            label: 'Workout hours per month',
-            data: countDuration()
+async function getData() {
+    const response = await fetch(url).then(res => res.json())
+        .then(data => {
+            for(let i = 0; i < data.length; i++) {
+                value.push([data[i].duration, MONTHS[parseInt(data[i].date.substring(5, 7)) - 1]]);
             }
-    ]};
+        });
+}
+console.log(value);
 
-let yValues = data;
+function sortValues() {
+    let map = ((m, a) => (value.forEach(temp => {
+        let [num, str] = temp;
+        m.set(str, (m.get(str) || 0) + num);
+    }), m))
+(new Map(), value);
 
-var workoutChart = new Chart(id, {
-    type: 'line',
-    data: {
-        labels: generateLabels(),
-        datasets: [{
-            backgorundColor: "rgba(255,255,255,1)",
-            borderColor: "rgba(255,255,255,0.1)",
-            data: yValues,
-            fill: true,
-            smooth: true
-        }]
+const result = ([...map.entries()].map(([a, b]) => [b, a]));
+    for(let i = 0; i < result.length; i++) {
+        xVal.push(MONTHS.indexOf(result[i][1])+1);
+        yVal.push(result[i][0]);
     }
-});
+}
+
+
+async function createChart() {
+    await getData();
+    await sortValues();
+    const ctx = document.getElementById('workoutChart').getContext('2d')
+    const workoutChart = new Chart(ctx, {
+        type:'bar',
+                data: {
+                labels: xVal,
+                datasets: [{
+                        label: 'Workout hours per Month',
+                        data: yVal
+                         }]
+                }
+    })
+}
+
+createChart();
