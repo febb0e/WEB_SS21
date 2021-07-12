@@ -17,20 +17,22 @@ async function getData() {
             }
         });
 }
-console.log(value);
 
 function sortValues() {
     let map = ((m, a) => (value.forEach(temp => {
         let [num, str] = temp;
         m.set(str, (m.get(str) || 0) + num);
     }), m))
-(new Map(), value);
+    (new Map(), value);
 
-const result = ([...map.entries()].map(([a, b]) => [b, a]));
+    const result = ([...map.entries()].map(([a, b]) => [b, a]));
     for(let i = 0; i < result.length; i++) {
-        xVal.push(MONTHS.indexOf(result[i][1])+1);
+        xVal.push(result[i][1]);
         yVal.push(result[i][0]);
     }
+    xVal.sort(function(a,b) {
+        return MONTHS.indexOf(a) > MONTHS.indexOf(b);
+    });
 }
 
 
@@ -38,15 +40,34 @@ async function createChart() {
     await getData();
     await sortValues();
     const ctx = document.getElementById('workoutChart').getContext('2d')
+    Chart.defaults.font.size = 16;
+    Chart.defaults.borderColor = 'rgba(148, 220, 255, 0.3)';
+    Chart.defaults.color = 'rgba(237, 249, 255, 0.8)';
     const workoutChart = new Chart(ctx, {
         type:'bar',
-                data: {
-                labels: xVal,
-                datasets: [{
-                        label: 'Workout hours per Month',
-                        data: yVal
-                         }]
+        data: {
+            labels: xVal,
+            datasets: [{
+                label: 'Workout hours per Month',
+                data: yVal,
+                backgroundColor: [
+                    'rgba(3, 190, 252, 0.8)'
+                ],
+                borderColor: [
+                    'rgba(14, 41, 54, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'rgba(237, 249, 255, 0.8)'
+                    }
                 }
+            },
+    }
     })
 }
 
