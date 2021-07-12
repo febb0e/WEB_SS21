@@ -18,6 +18,8 @@ async function getData() {
         });
 }
 
+console.log(value);
+
 function sortValues() {
     let map = ((m, a) => (value.forEach(temp => {
         let [num, str] = temp;
@@ -26,13 +28,14 @@ function sortValues() {
     (new Map(), value);
 
     const result = ([...map.entries()].map(([a, b]) => [b, a]));
+
+    result.sort(function(a,b) {
+            return MONTHS.indexOf(a[1]) > MONTHS.indexOf(b[1]);
+    });
     for(let i = 0; i < result.length; i++) {
         xVal.push(result[i][1]);
         yVal.push(result[i][0]);
     }
-    xVal.sort(function(a,b) {
-        return MONTHS.indexOf(a) > MONTHS.indexOf(b);
-    });
 }
 
 
