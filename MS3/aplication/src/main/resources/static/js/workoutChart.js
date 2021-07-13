@@ -5,7 +5,6 @@ const MONTHS = ["JAN","FEB","MAR","APR",
                 "SEP","OCT","NOV","DEC"];
 
 const value = new Array();
-const chart = new Array();
 const xVal = [];
 const yVal = [];
 
@@ -17,8 +16,6 @@ async function getData() {
             }
         });
 }
-
-console.log(value);
 
 function sortValues() {
     let map = ((m, a) => (value.forEach(temp => {

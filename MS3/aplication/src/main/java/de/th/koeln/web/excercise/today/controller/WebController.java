@@ -3,6 +3,7 @@ package de.th.koeln.web.excercise.today.controller;
 import de.th.koeln.web.excercise.today.entities.Post;
 import de.th.koeln.web.excercise.today.entities.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,9 @@ import java.util.UUID;
 public class WebController {
 
     public static Path path;
+
+    @Autowired
+    private Environment env;
 
     @Autowired
     private PostRepository postRepo;
@@ -69,7 +73,7 @@ public class WebController {
         }
         UUID uuid = UUID.randomUUID();
         String imageName = uuid+"_"+image.getOriginalFilename();
-        path = Paths.get("src/main/resources/static/uploads/"+imageName);
+        path = Paths.get(env.getProperty("upload_base_dir")+imageName);
 
         Post post = new Post(date, Float.parseFloat(duration), title, description, path.toString());
         postRepo.save(post);

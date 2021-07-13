@@ -58,9 +58,9 @@
                             <div class="post-content">
                                 <p class="date" th:text="${post?.date}"></p>
                                 <figure class="image-16zu9">
-                                    <a th:href="@{'/post/'+${post?.id}}"> <img th:src="${post?.imageLink}"> </a>
+                                    <a th:href="@{'~/post/'+${post?.id}}"> <img th:src="${post?.imageLink}"> </a>
                                 </figure>
-                                <a class="post-title" th:href="@{'/post/'+${post?.id}}" th:text="${post?.title}"></a>
+                                <a class="post-title" th:href="@{'~/post/'+${post?.id}}" th:text="${post?.title}"></a>
                                 <div class="column"></div>
                                 <p class="post-title">Duration: </p>
                                 <p class="post-text" th:text="${post?.duration}"></p>
